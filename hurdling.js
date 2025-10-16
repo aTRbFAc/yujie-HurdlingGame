@@ -16,8 +16,8 @@ let activeHurdles = []; // 当前屏幕上的栏板
 let isGameOver = false;
 
 // 音效
-const jumpSound = new Audio('/src/music/01.mp3');
-const failSound = new Audio('/src/music/02.mp3');
+const jumpSound = new Audio('music/01.mp3');
+const failSound = new Audio('music/02.mp3');
 
 // 移动端自动解锁音效
 function unlockAudio() {
@@ -132,7 +132,7 @@ function createHurdle() {
   }, 30);
 }
 
-// 🌟 独立的栏板生成器：持续按难度随机生成，不限于前一个
+// 独立的栏板生成器：持续按难度随机生成，不限于前一个
 function startHurdleGenerator() {
   const hurdleInterval = setInterval(() => {
     if (isGameOver) {
@@ -174,10 +174,6 @@ function endGame() {
   cancelAnimationFrame(animationId);
   setTimeout(() => {
     alert(`游戏结束！\n得分: ${score}\n游戏时长: ${timeDisplay.textContent}s`);
-    // 添加游戏分数到成就系统
-    if (typeof addhurdleTourScore === 'function') {
-      addhurdleTourScore(score);
-    }
     location.reload();
   }, 1500);
 }
